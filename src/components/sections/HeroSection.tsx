@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
-import { ChevronRight, Scale, Shield, BookOpen } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 
 export default function HeroSection() {
     const [currentImage, setCurrentImage] = useState(0);

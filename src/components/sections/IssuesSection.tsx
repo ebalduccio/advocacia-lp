@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Briefcase, Scale, Building2, Users, GraduationCap, HandCoins } from 'lucide-react';
+import { ArrowRight, Briefcase, Scale, Building2, Users } from 'lucide-react';
 
 interface PracticeArea {
     icon: React.ElementType;
@@ -59,14 +59,11 @@ const PRACTICE_AREAS: PracticeArea[] = [
 ];
 
 function PracticeAreaCard({ area }: { area: PracticeArea }): JSX.Element {
-    const [isHovered, setIsHovered] = useState(false);
     const Icon = area.icon;
 
     return (
         <div
             className="relative group bg-yellow-500 rounded-xl shadow-xl overflow-hidden transform transition-all duration-500 hover:-translate-y-2"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
         >
             {/* Background Pattern */}
             <div className="absolute top-0 right-0 w-32 h-32 transform translate-x-16 -translate-y-16 bg-yellow-900 rounded-full opacity-20" />

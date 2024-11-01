@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import {
     Linkedin,
     Mail,
-    Phone,
     Award,
     BookOpen,
     Scale,
@@ -114,14 +113,11 @@ const LAWYERS: Lawyer[] = [
 ];
 
 function LawyerCard({ lawyer }: { lawyer: Lawyer }) {
-    const [isHovered, setIsHovered] = useState(false);
     const [imageIsLoaded, setImageIsLoaded] = useState(false);
 
     return (
         <div
             className="group relative bg-white rounded-2xl shadow-xl overflow-hidden"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
         >
             {/* Background Pattern */}
             <div className="absolute top-0 right-0 w-48 h-48 bg-yellow-500/10 rounded-full transform translate-x-20 -translate-y-20 z-0" />

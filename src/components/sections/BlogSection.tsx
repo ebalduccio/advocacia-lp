@@ -3,10 +3,8 @@ import { Button } from "@/components/ui/button";
 import {
     ArrowRight,
     Clock,
-    User,
     ChevronRight,
     BookOpen,
-    Tags,
     Search,
     Calendar
 } from 'lucide-react';
