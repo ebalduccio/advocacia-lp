@@ -7,7 +7,7 @@ import { ChevronRight } from 'lucide-react';
 export default function HeroSection() {
     const [currentImage, setCurrentImage] = useState(0);
 
-    const images = [
+    const HERO_IMAGES = [
         {
             url: "/image2.jpg",
             title: "Excelência Jurídica",
@@ -23,11 +23,11 @@ export default function HeroSection() {
             title: "Atendimento Personalizado",
             subtitle: "Seu caso recebe a atenção que merece"
         }
-    ];
+    ] as const;
 
     useEffect(() => {
         const timer = setInterval(() => {
-            setCurrentImage((prev) => (prev + 1) % images.length);
+            setCurrentImage((prev) => (prev + 1) % HERO_IMAGES.length);
         }, 5000);
         return () => clearInterval(timer);
     }, []);
@@ -42,7 +42,7 @@ export default function HeroSection() {
         <section className="relative h-screen overflow-hidden">
             {/* Background Slider */}
             <div className="absolute inset-0 transition-opacity duration-1000">
-                {images.map((image, index) => (
+                {HERO_IMAGES.map((image, index) => (
                     <div
                         key={index}
                         className={`absolute inset-0 transition-opacity duration-1000 ${currentImage === index ? 'opacity-100' : 'opacity-0'
@@ -71,12 +71,12 @@ export default function HeroSection() {
 
                         {/* Main Title */}
                         <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
-                            {images[currentImage].title}
+                            {HERO_IMAGES[currentImage].title}
                         </h1>
 
                         {/* Subtitle */}
                         <p className="text-xl md:text-2xl text-gray-300">
-                            {images[currentImage].subtitle}
+                            {HERO_IMAGES[currentImage].subtitle}
                         </p>
 
                         {/* CTA Buttons */}
@@ -105,7 +105,7 @@ export default function HeroSection() {
 
             {/* Slide Indicators */}
             <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3">
-                {images.map((_, index) => (
+                {HERO_IMAGES.map((_, index) => (
                     <button
                         key={index}
                         onClick={() => setCurrentImage(index)}
