@@ -16,7 +16,6 @@ export default function Header({ navItems: propNavItems }: Props) {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [activeSubmenu, setActiveSubmenu] = useState<number | null>(null);
-    const [isAnimating, setIsAnimating] = useState(false);
 
     const navItems: NavItem[] = propNavItems || [
         {
@@ -37,8 +36,6 @@ export default function Header({ navItems: propNavItems }: Props) {
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';
-            setIsAnimating(true);
-            setTimeout(() => setIsAnimating(false), 400);
         } else {
             document.body.style.overflow = 'unset';
         }
@@ -81,11 +78,8 @@ export default function Header({ navItems: propNavItems }: Props) {
                         ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
                 >
                     <div className="flex flex-col h-full">
-                        {/* Menu Header with Animation */}
-                        <div
-                            className={`border-b border-gray-100 transition-all duration-500 delay-100
-                                ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}
-                        >
+                        {/* Menu Header */}
+                        <div className="border-b border-gray-100">
                             <div className="p-4">
                                 <div className="flex items-center space-x-2">
                                     <div className="w-8 h-8 bg-yellow-600 rounded flex items-center justify-center">
@@ -98,11 +92,8 @@ export default function Header({ navItems: propNavItems }: Props) {
                             </div>
                         </div>
 
-                        {/* Contact Info with Animation */}
-                        <div
-                            className={`bg-gray-50 p-4 transition-all duration-500 delay-150
-                                ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}
-                        >
+                        {/* Contact Info */}
+                        <div className="bg-gray-50 p-4">
                             <div className="flex flex-col space-y-2">
                                 <a href="tel:1112345678" className="text-sm text-gray-600 hover:text-yellow-600 flex items-center gap-2 transition-colors duration-200">
                                     <Phone className="h-4 w-4" />
@@ -123,16 +114,13 @@ export default function Header({ navItems: propNavItems }: Props) {
                             </div>
                         </div>
 
-                        {/* Navigation with Staggered Animation */}
+                        {/* Navigation */}
                         <div className="flex-1 overflow-y-auto">
                             <div className="p-4 space-y-1">
                                 {navItems.map((item, index) => (
                                     <div
                                         key={index}
-                                        className={`border-b border-gray-100 last:border-0 transition-all duration-500
-                                            ${isOpen ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}
-                                        `}
-                                        style={{ transitionDelay: `${200 + index * 50}ms` }}
+                                        className="border-b border-gray-100 last:border-0"
                                     >
                                         {item.submenu ? (
                                             <div>
@@ -179,11 +167,8 @@ export default function Header({ navItems: propNavItems }: Props) {
                             </div>
                         </div>
 
-                        {/* CTA Button with Animation */}
-                        <div
-                            className={`p-4 bg-white border-t border-gray-100 transition-all duration-500 delay-[400ms]
-                                ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-                        >
+                        {/* CTA Button */}
+                        <div className="p-4 bg-white border-t border-gray-100">
                             <Button
                                 className="w-full bg-yellow-600 hover:bg-yellow-700 text-white 
                                     transition-colors duration-200 transform hover:scale-[1.02]"
@@ -198,7 +183,6 @@ export default function Header({ navItems: propNavItems }: Props) {
             {/* Main Header */}
             <header className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 
                 ${scrolled ? 'bg-gray-900 shadow-xl' : 'bg-transparent'}`}>
-                {/* ... rest of the header code remains the same ... */}
                 {/* Top Bar */}
                 <div className="hidden lg:block bg-gray-900/95 backdrop-blur-sm text-white">
                     <div className="container mx-auto px-6 py-2">
